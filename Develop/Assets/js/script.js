@@ -29,8 +29,6 @@ $(function () {
             }
         });
     });
-
-    //
     // TODO: Add code to apply the past, present, or future class to each time
     // block by comparing the id to the current hour. HINTS: How can the id
     // attribute of each time-block be used to conditionally add or remove the
@@ -63,8 +61,6 @@ $(function () {
             }
         });
     }
-
-    //
     // TODO: Add code to get any user input that was saved in localStorage and set
     // the values of the corresponding textarea elements. HINT: How can the id
     // attribute of each time-block be used to do this?
@@ -79,8 +75,6 @@ $(function () {
             textArea.textContent = localStorage.getItem(key);
         });
     }
-
-    //
     // TODO: Add code to display the current date in the header of the page.
 
     var timeDisplayEl = $('#time-display');
@@ -90,17 +84,8 @@ $(function () {
         timeDisplayEl.text(rightNow);
     }
 
-
-    
     displayTime();
-
     updateTimeBlock();
-
     setInterval(updateTimeBlock, 60000);
-
     displayInputText();
-
 });
-
-//   12pm timeblock is not adjusting with the live time. it is staying green in the future class for some reason.
-  
