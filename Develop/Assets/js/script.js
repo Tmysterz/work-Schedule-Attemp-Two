@@ -27,6 +27,7 @@ $(function () {
             } else {
                 alert('local storage is not supported in this browser');
             }
+
         });
     });
 
@@ -36,10 +37,39 @@ $(function () {
     // attribute of each time-block be used to conditionally add or remove the
     // past, present, and future classes? How can Day.js be used to get the
     // current hour in 24-hour time?
+
+    function getCurrentHour() {
+        return new Date().getHours();
+    }
+
+    function updateTimeBlock() {
+        var timeBlock = document.querySelectorAll('.time-block');
+
+        var currentHour = getCurrentHour();
+
+        timeBlock.forEach(function (timeBlock) {
+            var timeBlockHour = timeBlock.id.split('-')[1];
+
+            var timeBlockHour24 = timeBlockHour.endsWith('am')? parseInt(timeBlockHour) : parseInt(timeBlockHour) + 12;
+
+            if (currentHour > timeBlockHour24) {
+                timeBlock.classList.add('past');
+                timeBlock.classList.remove('present', 'future');
+            } else if (currentHour === timeBlockHour24) {
+                timeBlock.classList.add('present');
+                timeBlock.classList.remove('past', 'future');
+            }   else {
+                timeBlock.classList.add('future');
+                timeBlock.classList.remove('past', 'present');
+            }
+        });
+    }
+
     //
     // TODO: Add code to get any user input that was saved in localStorage and set
     // the values of the corresponding textarea elements. HINT: How can the id
     // attribute of each time-block be used to do this?
+
     //
     // TODO: Add code to display the current date in the header of the page.
 
@@ -50,5 +80,10 @@ $(function () {
         timeDisplayEl.text(rightNow);
     }
     displayTime();
+    updateTimeBlock();
+
+    setInterval(updateTimeBlock, 60000);
+
+    
   });
   
