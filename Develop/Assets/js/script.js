@@ -48,7 +48,7 @@ $(function () {
             var timeBlockHour = timeBlock.id.split('-')[1];
 
             var timeBlockHour24 = timeBlockHour.endsWith('am') || timeBlockHour === "12pm" ? parseInt(timeBlockHour) : parseInt(timeBlockHour) + 12;
-            console.log(timeBlockHour, timeBlockHour24); 
+            
             if (currentHour > timeBlockHour24) {
                 timeBlock.classList.add('past');
                 timeBlock.classList.remove('present', 'future');
