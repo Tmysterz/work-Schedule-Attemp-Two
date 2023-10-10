@@ -9,8 +9,6 @@ $(function () {
     // time-block containing the button that was clicked? How might the id be
     // useful when saving the description in local storage?
 
-    
-
     var saveButtons = document.querySelectorAll('.btn');
 
     saveButtons.forEach(function (button) {
@@ -72,6 +70,14 @@ $(function () {
     // attribute of each time-block be used to do this?
 
     function displayInputText () {
+        console.log('testing');
+        var textAreas = document.querySelectorAll('.description');
+
+        textAreas.forEach(function (textArea) {
+        
+            var key = textArea.parentElement.id;
+            console.log(key);
+        });
     }
 
     //
@@ -84,11 +90,16 @@ $(function () {
         timeDisplayEl.text(rightNow);
     }
 
+    
+
     displayTime();
 
     updateTimeBlock();
 
     setInterval(updateTimeBlock, 60000);
+
+    displayInputText();
+
   });
 
 //   12pm timeblock is not adjusting with the live time. it is staying green in the future class for some reason.
