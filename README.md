@@ -4,8 +4,8 @@ In this application when ever the user opens the webpage they see a work schedul
 
 * Screenshot
 
-![Screenshot]()
+![Screenshot](./Develop/Assets/images/workScheduleScreensshot.png)
 
 * Link to deployed application 
 
-[Work-Scheduler]()
+[Work-Scheduler](https://tmysterz.github.io/work-Schedule-Attemp-Two/)
