@@ -49,8 +49,8 @@ $(function () {
         timeBlock.forEach(function (timeBlock) {
             var timeBlockHour = timeBlock.id.split('-')[1];
 
-            var timeBlockHour24 = timeBlockHour.endsWith('am') ? parseInt(timeBlockHour) : parseInt(timeBlockHour) + 12;
-
+            var timeBlockHour24 = timeBlockHour.endsWith('am') || timeBlockHour === "12pm" ? parseInt(timeBlockHour) : parseInt(timeBlockHour) + 12;
+            console.log(timeBlockHour, timeBlockHour24); 
             if (currentHour > timeBlockHour24) {
                 timeBlock.classList.add('past');
                 timeBlock.classList.remove('present', 'future');
@@ -70,13 +70,13 @@ $(function () {
     // attribute of each time-block be used to do this?
 
     function displayInputText () {
-        console.log('testing');
         var textAreas = document.querySelectorAll('.description');
 
         textAreas.forEach(function (textArea) {
         
             var key = textArea.parentElement.id;
-            console.log(key);
+            
+            textArea.textContent = localStorage.getItem(key);
         });
     }
 
@@ -90,8 +90,8 @@ $(function () {
         timeDisplayEl.text(rightNow);
     }
 
-    
 
+    
     displayTime();
 
     updateTimeBlock();
@@ -100,7 +100,7 @@ $(function () {
 
     displayInputText();
 
-  });
+});
 
 //   12pm timeblock is not adjusting with the live time. it is staying green in the future class for some reason.
   
