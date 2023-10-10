@@ -9,6 +9,8 @@ $(function () {
     // time-block containing the button that was clicked? How might the id be
     // useful when saving the description in local storage?
 
+    
+
     var saveButtons = document.querySelectorAll('.btn');
 
     saveButtons.forEach(function (button) {
@@ -27,7 +29,6 @@ $(function () {
             } else {
                 alert('local storage is not supported in this browser');
             }
-
         });
     });
 
@@ -50,7 +51,7 @@ $(function () {
         timeBlock.forEach(function (timeBlock) {
             var timeBlockHour = timeBlock.id.split('-')[1];
 
-            var timeBlockHour24 = timeBlockHour.endsWith('am')? parseInt(timeBlockHour) : parseInt(timeBlockHour) + 12;
+            var timeBlockHour24 = timeBlockHour.endsWith('am') ? parseInt(timeBlockHour) : parseInt(timeBlockHour) + 12;
 
             if (currentHour > timeBlockHour24) {
                 timeBlock.classList.add('past');
@@ -70,6 +71,9 @@ $(function () {
     // the values of the corresponding textarea elements. HINT: How can the id
     // attribute of each time-block be used to do this?
 
+    function displayInputText () {
+    }
+
     //
     // TODO: Add code to display the current date in the header of the page.
 
@@ -79,11 +83,13 @@ $(function () {
         var rightNow = dayjs().format('dddd, MMMM D');
         timeDisplayEl.text(rightNow);
     }
+
     displayTime();
+
     updateTimeBlock();
 
     setInterval(updateTimeBlock, 60000);
-
-    
   });
+
+//   12pm timeblock is not adjusting with the live time. it is staying green in the future class for some reason.
   
